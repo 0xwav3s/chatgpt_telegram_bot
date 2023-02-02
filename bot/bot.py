@@ -83,7 +83,7 @@ async def retry_handle(update: Update, context: CallbackContext):
     await message_handle(update, context, message=last_dialog_message["user"], use_new_dialog_timeout=False)
 
 
-async def message_handle(update: Update, context: CallbackContext, message=None, use_new_dialog_timeout=True):
+async def message_handle(update: Update, context: CallbackContext, message=None, use_new_dialog_timeout=False):
     await register_user_if_not_exists(update, context, update.message.from_user)
     user_id = update.message.from_user.id
 
@@ -99,11 +99,12 @@ async def message_handle(update: Update, context: CallbackContext, message=None,
 
     try:
         message = message or update.message.text
+        await update.message.chat.send_action(action="typing")
 
         answer, prompt, n_used_tokens, n_first_dialog_messages_removed = chatgpt.ChatGPT().send_message(
             message,
             dialog_messages=db.get_dialog_messages(user_id, dialog_id=None),
-            chat_mode=db.get_user_attribute(user_id, "current_chat_mode"),
+            chat_mode=db.get_user_attribute(user_id, "current_chat_mode")
         )
 
         # update user data

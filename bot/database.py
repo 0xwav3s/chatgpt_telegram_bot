@@ -9,7 +9,12 @@ pymongo.timeout(180)
 
 class Database:
     def __init__(self):
-        self.client = pymongo.MongoClient(config.mongodb_uri)
+        try:
+            print ("Using Mongo Atlas")
+            self.client = pymongo.MongoClient(config.mongodb_uri)
+        except:
+            print ("Using Mongo Local")
+            self.client = pymongo.MongoClient(config.mongodb_uri_local)
         self.db = self.client["chatgpt_telegram_bot"]
 
         self.user_collection = self.db["user"]

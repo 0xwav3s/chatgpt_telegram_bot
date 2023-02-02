@@ -20,6 +20,8 @@ telegram_token = config_yaml["telegram_token"]
 openai_api_key = config_yaml["openai_api_key"]
 allowed_telegram_usernames = config_yaml["allowed_telegram_usernames"]
 new_dialog_timeout = config_yaml["new_dialog_timeout"]
+# mongodb_uri = {config_env['MONGODB_URI']}
+mongodb_uri_local = {config_env['MONGODB_URI_LOCAL']}
 
 
 
@@ -45,4 +47,3 @@ else:
         flush=True
     )
 
-mongodb_uri = {config_env['MONGODB_URI']}
