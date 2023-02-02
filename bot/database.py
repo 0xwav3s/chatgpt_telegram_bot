@@ -5,7 +5,7 @@ import uuid
 from datetime import datetime
 
 import config
-
+pymongo.timeout(180)
 
 class Database:
     def __init__(self):
