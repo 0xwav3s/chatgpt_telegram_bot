@@ -1,8 +1,8 @@
 import config
 
 import openai
-
-openai.api_key = config.openai_api_key[1]
+# import terminal
+openai.api_key = config.openai_api_key
 
 CHAT_MODES = {
     "assistant": {

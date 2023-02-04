@@ -17,7 +17,7 @@ config_env = dotenv.dotenv_values(config_dir / "config.env")
 
 # config parameters
 telegram_token = config_yaml["telegram_token"]
-openai_api_key = config_yaml["openai_api_key"]
+openai_api_key = config_yaml["openai_api_key"][1]
 allowed_telegram_usernames = config_yaml["allowed_telegram_usernames"]
 new_dialog_timeout = config_yaml["new_dialog_timeout"]
 # mongodb_uri = {config_env['MONGODB_URI']}
@@ -28,7 +28,8 @@ mongodb_uri_local = {config_env['MONGODB_URI_LOCAL']}
 atlas_group_id = config_yaml["atlas_group_id"]
 atlas_api_key_public = config_yaml["atlas_api_key_public"]
 atlas_api_key_private = config_yaml["atlas_api_key_private"]
-# IP_addres = load(urllib.request.urlopen('https://ipv4.jsonip.com'))['ip']
+
+
 IP_addres = requests.get("https://api.ipify.org?format=json").json()["ip"]
 
 print("IP: "+ IP_addres)
