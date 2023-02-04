@@ -25,9 +25,9 @@ mongodb_uri_local = {config_env['MONGODB_URI_LOCAL']}
 
 
 
-atlas_group_id = "63d9618899b66c0c1af002f9"
-atlas_api_key_public = "puozgkzd"
-atlas_api_key_private = "d15d264d-6f20-4140-92b1-eae5296bd856"
+atlas_group_id = config_yaml["atlas_group_id"]
+atlas_api_key_public = config_yaml["atlas_api_key_public"]
+atlas_api_key_private = config_yaml["atlas_api_key_private"]
 # IP_addres = load(urllib.request.urlopen('https://ipv4.jsonip.com'))['ip']
 IP_addres = requests.get("https://api.ipify.org?format=json").json()["ip"]
 
